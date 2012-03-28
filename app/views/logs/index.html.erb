@@ -1,0 +1,26 @@
+
+
+<%= form_for(@new_log) do |f| %>
+    <%= f.text_field :title, placeholder: "Type something to log..." %>
+<% end %>
+<h1>Listing logs</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Created</th>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @logs.each do |log| %>
+  <tr>
+    <td><%= log.created_at %></td>
+    <td><%= log.title %></td>
+    <td><%= link_to raw('<i class="icon-remove"></i>'), log, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+
+  </tbody>
+</table>
+<br />
