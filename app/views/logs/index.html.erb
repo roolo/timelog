@@ -1,9 +1,7 @@
-<%= form_for(@new_log) do |f| %>
-    <%= f.text_field :title, placeholder: "Type something to log..." %>
-<% end %>
-
 <% if @logs.empty? %>
-    <p>Nothing to show. Log somethig by typing something in upwards field, followed by hitting enter</p>
+    <div class="alert alert-info">
+      <strong>Nothing to show!</strong> Log somethig by typing something in upwards field, followed by hitting enter
+    </div>
 <% else %>
     <%= render :partial => 'listing', locals: {logs: @logs} %>
 <% end %>

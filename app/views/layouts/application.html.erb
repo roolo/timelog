@@ -58,6 +58,11 @@
       <div class="row">
 
         <div class="span12">
+          <% if user_signed_in? %>
+              <%= form_for(@new_log) do |f| %>
+                  <%= f.text_field :title, placeholder: "Type something to log..." %>
+              <% end %>
+          <% end %>
           <% ApplicationController::FLASH_BOOTSTRAP.each do |flash_level, bootstrap_level| %>
           <% next if flash[flash_level].blank? %>
            <div data-alert="alert" class="alert alert-<%= bootstrap_level %> fade in">
