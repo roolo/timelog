@@ -54,10 +54,17 @@
     <br/>
     <br/>
     <br/>
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
 
-        <div class="span9">
+        <div class="span12">
+          <% ApplicationController::FLASH_BOOTSTRAP.each do |flash_level, bootstrap_level| %>
+          <% next if flash[flash_level].blank? %>
+           <div data-alert="alert" class="alert alert-<%= bootstrap_level %> fade in">
+              <a class="close" data-dismiss="alert" href="#">&times;</a>
+              <%= content_tag :p, flash[flash_level] %>
+            </div>
+          <% end %>
           <%= yield %>
         </div>
 
