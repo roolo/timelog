@@ -5,7 +5,6 @@ class LogsController < ApplicationController
   # GET /logs.json
   def index
     @logs = current_user.logs
-    @new_log = Log.new
 
     respond_to do |format|
       format.html # index.html.erb

@@ -42,7 +42,7 @@
                   <i class="icon-user icon-white"></i> <%= current_user %> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Edit account</a></li>
+                  <li><a href="<%= edit_user_registration_path current_user %>">Edit account</a></li>
                   <li class="divider"></li>
                   <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
                 </ul>
@@ -61,7 +61,7 @@
 
         <div class="span12">
           <% if user_signed_in? %>
-              <%= form_for(@new_log) do |f| %>
+              <%= form_for(Log.new) do |f| %>
                   <%= f.text_field :title, placeholder: "Type something to log..." %>
               <% end %>
           <% end %>
