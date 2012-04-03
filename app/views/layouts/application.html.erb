@@ -56,13 +56,13 @@
     <br/>
     <br/>
     <br/>
-    <div class="container">
-      <div class="row">
+    <div class="container-fluid">
+      <div class="row-fluid">
 
         <div class="span12">
           <% if user_signed_in? %>
               <%= form_for(Log.new) do |f| %>
-                  <%= f.text_field :title, placeholder: "Type something to log..." %>
+                  <%= f.text_field :title, placeholder: "Type something to log and then hit enter..." %>
               <% end %>
           <% end %>
           <% ApplicationController::FLASH_BOOTSTRAP.each do |flash_level, bootstrap_level| %>
