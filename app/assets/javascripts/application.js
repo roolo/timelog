@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require twitter/bootstrap
+
+jQuery(document).ready(function() {
+    $('input').filter(function() { return $(this).val() == ""; }).first().focus();
+});
