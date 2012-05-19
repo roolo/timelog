@@ -8,6 +8,14 @@
   </tr>
   </thead>
   <tbody>
-    <%= render :partial => 'log', collection: logs %>
+    <% logs_today = logs.group_by {|l|l.created_at.in_time_zone.today?.to_s.to_sym } %>
+    <tr>
+      <th colspan="3">Today</th>
+    </tr>
+    <%= render :partial => 'log', collection: logs_today[:true] %>
+    <tr>
+      <th colspan="3">Earlier</th>
+    </tr>
+    <%= render :partial => 'log', collection: logs_today[:false] %>
   </tbody>
 </table>
