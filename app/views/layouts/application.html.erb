@@ -12,7 +12,12 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
 
     <!-- Le fav and touch icons -->
     <link href="<%= asset_path 'favicon.png' %>" rel="shortcut icon">
@@ -53,24 +58,41 @@
         </div>
       </div>
     </div>
-    <br/>
-    <br/>
-    <br/>
+
     <div class="container-fluid">
       <div class="row-fluid">
 
         <div class="span12">
           <% if user_signed_in? %>
-              <%= form_for(Log.new) do |f| %>
-                  <%= f.text_field :title, placeholder: "Type something to log and then hit enter..." %>
-              <% end %>
-          <% end %>
-          <% ApplicationController::FLASH_BOOTSTRAP.each do |flash_level, bootstrap_level| %>
-          <% next if flash[flash_level].blank? %>
-           <div data-alert="alert" class="alert alert-<%= bootstrap_level %> fade in">
-              <a class="close" data-dismiss="alert" href="#">&times;</a>
-              <%= content_tag :p, flash[flash_level] %>
-            </div>
+            <%= form_for(@new_log) do |f| %>
+              <%= f.text_field :title, placeholder: 'Type something to log and then hit enter...' %>
+              <div class="row">
+                <div class="span6">
+                  <%= f.fields_for :topics, @new_topic do |sub| %>
+                    <div class="row">
+                      <div class="span3">
+                      <%= sub.text_field :title, placeholder: 'Main topic' %>
+                      </div>
+                      <div class="span2">
+                        <%= label_tag nil, nil, class: 'checkbox' do %>
+                          <%= check_box_tag :lock_topic, nil, true %>&nbsp;Lock topic
+                        <% end %>
+                      </div>
+                    </div>
+
+                  <% end %>
+                </div>
+                <div class="span4">
+                  <% ApplicationController::FLASH_BOOTSTRAP.each do |flash_level, bootstrap_level| %>
+                    <% next if flash[flash_level].blank? %>
+                    <div data-alert="alert" class="alert alert-<%= bootstrap_level %> fade in">
+                      <a class="close" data-dismiss="alert" href="#">&times;</a>
+                      <%= content_tag :p, flash[flash_level] %>
+                    </div>
+                  <% end # /flashes %>
+                </div>
+              </div>
+            <% end # /form %>
           <% end %>
           <%= yield %>
         </div>
