@@ -1,14 +1,5 @@
 class ApplicationController < ActionController::Base
-  FLASH_BOOTSTRAP = { notice: :success, message: :info, alert: :error }
-
-  protect_from_forgery
-  before_filter :set_user_time_zone
-
-
-  private
-
-  def set_user_time_zone
-    Time.zone = current_user.time_zone if user_signed_in?
-  end
-
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
 end
