@@ -1,5 +1,5 @@
 class Log < ActiveRecord::Base
-  default_scope :order => 'created_at DESC'
+  default_scope { order(created_at: :desc) }
 
   belongs_to :user
   has_many :topics
