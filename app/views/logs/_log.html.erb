@@ -1,5 +1,12 @@
 <tr>
   <td class="datetime-container"><%= log.created_at.in_time_zone %></td>
-  <td><%= log.title %></td>
-  <td><%= link_to raw('<i class="glyphicon glyphicon-remove"></i>'), log, confirm: 'Are you sure?', method: :delete %></td>
+  <td>
+    <%= log.title %>
+    <% log.label_list.each do |label| %>
+      <span class="label label-default"><%= label %></span>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to raw('<i class="glyphicon glyphicon-remove"></i>'), log, confirm: 'Are you sure?', method: :delete %>
+  </td>
 </tr>
