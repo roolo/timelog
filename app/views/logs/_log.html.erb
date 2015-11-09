@@ -1,10 +1,7 @@
 <tr>
   <td class="datetime-container"><%= log.created_at.in_time_zone %></td>
   <td>
-    <%= log.title %>
-    <% log.label_list.each do |label| %>
-      <%= render partial: 'label_name_filter_link', locals: {label: label, filter_label_name: filter_label_name} %>
-    <% end %>
+    <%= raw replace_labels log.title, filter_label_name %>
   </td>
   <td>
     <%= link_to raw('<i class="glyphicon glyphicon-remove"></i>'), log, confirm: 'Are you sure?', method: :delete %>
