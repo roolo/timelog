@@ -3,7 +3,7 @@
   <td>
     <%= log.title %>
     <% log.label_list.each do |label| %>
-      <span class="label label-default"><%= label %></span>
+      <%= render partial: 'label_name_filter_link', locals: {label: label, filter_label_name: filter_label_name} %>
     <% end %>
   </td>
   <td>

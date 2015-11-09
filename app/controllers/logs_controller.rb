@@ -5,7 +5,12 @@ class LogsController < ApplicationController
   # GET /logs
   # GET /logs.json
   def index
-    @logs = Log.all
+    logs = Log.all
+
+    @filter_label_name = list_filter[:label_name]
+    logs = logs.tagged_with @filter_label_name if @filter_label_name.present?
+
+    @logs = logs
   end
 
   # GET /logs/1
@@ -66,13 +71,17 @@ class LogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_log
-      @log = Log.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_log
+    @log = Log.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def log_params
-      params.require(:log).permit(:user_id, :title)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def log_params
+    params.require(:log).permit(:user_id, :title)
+  end
+
+  def list_filter
+    params.permit(:label_name)
+  end
 end

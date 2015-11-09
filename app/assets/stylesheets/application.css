@@ -19,9 +19,6 @@ body {
   padding-top: 70px;
 }
 
-#log_title {
-  height:1.3em;
-  line-height:1.3em;
-  font-size: xx-large;
-  width:  100%;
+.label {
+  margin-right: 5px;
 }
