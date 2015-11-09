@@ -4,7 +4,7 @@ class Log < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
   include ActiveModel::Dirty
 
-  LABEL_REGEXP = /(#(?<label>[\w]+)|\[(?<label>[\w]+)\])+/i
+  LABEL_REGEXP = /(#(?<label>[\w\-\d]+)|\[(?<label>[\w\-\d]+)\])+/i
 
 
   belongs_to :user

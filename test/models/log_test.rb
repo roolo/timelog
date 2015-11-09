@@ -12,4 +12,14 @@ class LogTest < ActiveSupport::TestCase
       assert_includes log.label_list, label_name
     end
   end
+
+  test 'label extraction' do
+    log = Log.new title: ''
+
+    extracted_labels = log.extract_labels('#tale-tiTELING #hoB-bit2 [smuRFing-taht-2ce] Some title')
+
+    %w(tale-titeling hob-bit2 smurfing-taht-2ce).each do |label_name|
+      assert_includes extracted_labels, label_name
+    end
+  end
 end
