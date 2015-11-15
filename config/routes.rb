@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :user_account do
+    get :edit
+    patch :update
+  end
+
   resources :logs
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
