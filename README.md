@@ -6,3 +6,7 @@ You save text and this app give it to you with timestamp. Inspired by [Timelog](
 - time tracking
 - activity reminder
 - &hellip;
+
+## Visual demo
+
+![Visual demo of Timelog](https://files.app.net/hj2mhkrrW.gif)
